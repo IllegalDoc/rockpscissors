@@ -1,0 +1,105 @@
+div.start {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+button.start,
+button.new {
+  position: relative;
+  flex: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 10px 20px;
+  background-color: #9df9ef;
+  color: #323674;
+  font-size: 36px;
+  font-weight: 900;
+
+  border: none;
+}
+
+div.new {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+div.choice {
+  height: 70vh;
+  display: flex;
+}
+button.choice {
+  flex: 1;
+  background-color: #2b1a20;
+  border: transparent;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+}
+#rock {
+  background-image: url(images.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+button.choice:hover {
+  color: white;
+}
+#scissors {
+  background-image: url(images2.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+#paper {
+  background-image: url(images3.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+div.result {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #cb4234;
+  text-align: center;
+  display: flex;
+
+  background-image: url(images4.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+}
+p.result {
+  flex: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #cb4234;
+  text-align: center;
+  display: flex;
+
+  background-image: url(images4.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}

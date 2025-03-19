@@ -9,75 +9,86 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  try {
-    let humanchoice = prompt("rock, paper or scissors ?");
-    humanchoice = humanchoice.toLowerCase();
-    if (
-      humanchoice !== "rock" &&
-      humanchoice !== "scissors" &&
-      humanchoice !== "paper"
-    ) {
-      throw new Error("Invalid Input : Not amongst choices.");
-    }
-    return humanchoice;
-  } catch (error) {
-    console.error(error.message);
-    alert("Enter a proper choice ! ");
-  }
-}
+let round = 1;
+let computerscore = 0;
+let humanscore = 0;
 
 function playround(Computerchoice, humanchoice) {
   let cchoice = Computerchoice();
-  let hchoice = humanchoice();
+  let hchoice = humanchoice;
+
   if (hchoice === "rock" && cchoice === "scissors") {
-    console.log("good job +1 !, rock crushes negus!");
     return 1;
   } else if (hchoice === "rock" && cchoice === "paper") {
-    console.log("yo stupid, rock looses");
     return 0;
   } else if (hchoice === "paper" && cchoice === "scissors") {
-    console.log("yo stupid ,paper looses");
     return 0;
   } else if (hchoice === "paper" && cchoice === "rock") {
-    console.log("good job +1 !, paper win negus");
     return 1;
   } else if (hchoice === "scissors" && cchoice === "paper") {
-    console.log("good job +1 !, scissors win boy");
     return 1;
-  } else if (hchoice === "scissors" && cchoice === "paper") {
-    console.log("yo stupid scissors loose negus");
+  } else if (hchoice === "scissors" && cchoice === "rock") {
     return 0;
   } else if (hchoice === "rock" && cchoice === "rock") {
-    console.log("draw");
     return "draw";
   } else if (hchoice === "paper" && cchoice === "paper") {
-    console.log("draw");
-
     return "draw";
   } else if (hchoice === "scissors" && cchoice === "scissors") {
-    console.log("draw");
     return "draw";
   }
 }
+const btn1 = document.querySelector("button.scissors");
+const div = document.querySelector("div.result");
+const newgamebutton = document.querySelector("button.new");
+const newgamediv = document.querySelector("div.new");
+newgamediv.style.display = "none";
 
-function playgame() {
-  let round = 1;
-  let humanscore = 0;
-  let computerscore = 0;
-  while (round < 6) {
-    round += 1;
-    let r = playround(getComputerChoice, getHumanChoice);
-    if (r === 0) {
-      computerscore += 1;
-    } else if (r === 1) {
-      humanscore += 1;
-    }
-  }
-  if (humanscore > computerscore) {
-    return "good job, you won g!";
-  } else if (computerscore > humanscore) {
-    return "you lost, yo stupid";
-  }
+function newgame() {
+  div.textContent = "Another one!";
+  round = 1;
+  computerscore = 0;
+  humanscore = 0;
+  newgamediv.style.display = "none";
 }
-console.log(playgame());
+const divstartbutton = document.querySelector("div.start");
+const startbutton = document.querySelector("button.start");
+startbutton.addEventListener("click", (e) => {
+  divstartbutton.style.display = "none";
+
+  newgamebutton.addEventListener("click", newgame);
+
+  const choicebuttons = document.querySelectorAll("button.choice");
+  console.log(choicebuttons);
+  choicebuttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      let value = playround(getComputerChoice, button.textContent);
+      if (
+        round < 5 &&
+        humanscore - computerscore != 2 &&
+        computerscore - humanscore != 2
+      ) {
+        if (value === 1) {
+          div.textContent = " round" + round + "  : You Win 😀";
+          humanscore += 1;
+          round += 1;
+        } else if (value === 0) {
+          div.textContent = " round" + round + "  : You Loose 😓";
+          computerscore += 1;
+          round += 1;
+        } else if (value === "draw") {
+          div.textContent = " round" + round + " : Draw 🤞";
+          computerscore += 1;
+          humanscore += 1;
+          round += 1;
+        }
+      } else {
+        if (humanscore > computerscore) {
+          alert("You Won!😀😀😀");
+        } else if (computerscore > humanscore) {
+          alert("You Lost the game 😓😓😓");
+        } else alert("Draw  🤞🤞🤞");
+        newgamediv.style.display = "flex";
+      }
+    });
+  });
+});
